@@ -1,0 +1,43 @@
+<mat-card>Ingrese los datos de signos vitales del paciente</mat-card>
+
+<form class="example-container" [formGroup]="form" #frmSigno="ngForm" (ngSubmit)="operar()">
+
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="id">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="IdPaciente" required formControlName="IdPaciente" type="number">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Fecha" required formControlName="fecha" type="string">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">            
+        <input matInput placeholder="Pulso" minlength="3" required formControlName="pulso">       
+        <small *ngIf="f.nombres.errors?.required && f.nombres.touched" class="invalido">Pulso es requerido</small>
+        <!--<small *ngIf="f.nombres.errors?.minlength" class="invalido">El campo debe ser mayor a 3 caracteres</small> -->
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">        
+        <input matInput placeholder="Temperatura" required formControlName="Temperatura">
+        <small *ngIf="f.nombres.errors?.required" class="invalido">Temperatura es requerido</small>    
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="RitmoResp" required formControlName="RitmoResp" type="number">
+    </mat-form-field>    
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmSigno.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Aceptar</span>
+    </button>
+    <button mat-raised-button color="accent" routerLink='/signo' type="button">
+        <mat-icon>close</mat-icon>
+        <span>Cancelar</span>
+    </button>
+
+</form>
